@@ -21,9 +21,21 @@
 const juegos = {
     aguila: 0,
     sol: 1,
-    tirarMoneda: undefined
+    tirarMoneda: function()
+    {
+        const valor = Math.round(Math.random());
+        if(valor === 1)
+        {
+            console.log("Cae águila 🦅");
+        }
+        else
+        {
+            console.log("Cae sol 🌞")
+        }
+    }
 }
 
 for (let tiros = 0; tiros < 10; tiros++) {
-    // juegos.tirarMoneda()
+    juegos.tirarMoneda()
 }
+
