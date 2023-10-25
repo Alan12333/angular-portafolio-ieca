@@ -36,11 +36,40 @@
 
         const btnUndo = document.getElementById('btnUndo')
         const tituloEncabezado = document.getElementById('encabezado')
-        const inputEncabezado = document.getElementById('inputEncabezado')
+        const inputEncabezado = document.getElementById('inputEncabezado');
+        var titulos = [];
+        var indice = 0;
 
         function modificarEncabezado() {
             /* Tu código aquí */
+            if(inputEncabezado.value !== "")
+            {
+                titulos.push(inputEncabezado.value);
+                indice = titulos.length -1;
+                tituloEncabezado.innerHTML = titulos[indice];
+                if(titulos.length >= 2)
+                {
+                    btnUndo.disabled = false;
+                }
+                inputEncabezado.value = "";
+            }
+            else
+            {
+                alert("Campo vació")
+            }
         }
+
+        btnUndo.addEventListener("click", ()=>{
+            if(indice >= 1)
+            {
+                indice = indice -1;
+                tituloEncabezado.innerHTML = titulos[indice];
+            }
+            else if(indice === 0)
+            {
+                tituloEncabezado.innerHTML = titulos[indice];
+            }
+        })
     </script>
 </body>
 
